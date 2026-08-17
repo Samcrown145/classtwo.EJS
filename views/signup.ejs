@@ -152,15 +152,16 @@
  <!-- From Uiverse.io by akshat-patel28 --> 
  <div class="form-container">
       <p class="title">Welcome back</p>
-      <form class="form">
-         <input id="firstName" type="text" class="input" placeholder="First Name">
-        <input id="lastName" type="text" class="input" placeholder="Last Name">
-        <input id="email" type="email" class="input" placeholder="Email">
-        <input id="password" type="password" class="input" placeholder="Password">
+      <form class="form" method="POST" action="/postit">
+        <input name="first_name" type="text" class="input" placeholder="First Name" required>
+        <input name="last_name" type="text" class="input" placeholder="Last Name" required>
+        <input name="email" type="email" class="input" placeholder="Email" required>
+        <input name="student_id" type="text" class="input" placeholder="Student ID" required>
+        <input name="password" type="password" class="input" placeholder="Password" required>
         <p class="page-link">
           <span class="page-link-label">Forgot Password?</span>
         </p>
-        <button class="form-btn" onclick="Signup()">Sign up</button>
+        <button class="form-btn" type="submit">Sign up</button>
       </form>
       <p class="sign-up-label">
         Alreay have an account?<span class="sign-up-link"> <a href="/signin">Sign in</a></span>
@@ -190,16 +191,4 @@
     </div>
 
 </body>
-<script>
-    const mail = document.getElementById('email');
-    const pass = document.getElementById('password');
-
-    function Signup() {
-        if (mail.value === '' || pass.value === '') {
-            alert('Fill in all details.');
-        } else {
-            alert(`Welcome back, ${mail.value}!`);
-        }
-    }
-</script>
 </html>
