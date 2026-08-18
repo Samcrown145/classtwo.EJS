@@ -1,9 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const dns = require('dns');
 require('dotenv').config();
 
 const studentRoutes = require('./routes/student.model');
+// app.use(cors());
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -15,6 +17,7 @@ dns.setServers(['8.8.8.8', '8.8.4.4']);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
+app.use(cors());
 
 mongoose.connect(uri)
     .then(() => {
