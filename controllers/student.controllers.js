@@ -1,4 +1,5 @@
 const { studentModel } = require('../models/student.models');
+const bcrypt = require('bcrypt');
 
 const renderAbout = (req, res) => {
     const name = 'samcrown';
@@ -19,6 +20,10 @@ const renderIndexPage = (req, res) => {
 
 const createStudent = async (req, res) => {
     try {
+
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(req.body.password, salt);
+        req.body.password = hashedPassword;
         const newStudent = new studentModel({
             first_name: req.body.first_name,
             last_name: req.body.last_name,
